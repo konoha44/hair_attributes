@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, abort, redirect, url_for, render_template, send_file
-from sklearn.externals import joblib
 import numpy as np
 import pandas as pd
 
