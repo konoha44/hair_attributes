@@ -1,7 +1,9 @@
+
 import boto3
 import time
+import os
 
-
+print('asd')
 def download_model(bucket):
     session = boto3.session.Session()
     s3 = session.client(

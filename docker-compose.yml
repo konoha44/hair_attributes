@@ -1,5 +1,8 @@
 version: '3'
 services:
+  dowload_model:
+    build: .
+    command: python download_model.py
   flask:
     build: .
     command: gunicorn -b 0.0.0.0:5001 prediction_service:app --reload --workers 1
