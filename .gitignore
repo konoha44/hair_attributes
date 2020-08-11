@@ -4,3 +4,4 @@ __pycash__/*
 .keras/*
 *.onnx
 .DS_Store
+.bash_history

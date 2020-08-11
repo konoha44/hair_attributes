@@ -10,7 +10,7 @@ from tensorflow.keras.applications.xception import preprocess_input
 def load_models():
     model_paths = glob.glob('*.onnx')
     model_dicts = {}
-    for model_path in model_paths[:2]:
+    for model_path in model_paths:
         print(model_path)
         model_dicts[model_path.replace('.onnx','').replace('model_','')] = onnxruntime.InferenceSession(model_path)
     return model_dicts
