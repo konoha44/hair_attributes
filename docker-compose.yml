@@ -14,7 +14,7 @@ services:
       - FLASK_DEBUG=1
       - PYTHONUNBUFFERED=True
     ports:
-      - "5001:5001"
+      - "8000:8000"
     restart: on-failure
     volumes:
         - ./:/root

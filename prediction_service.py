@@ -20,7 +20,7 @@ app.config.update(dict(
 ))
 app.config['JSON_AS_ASCII'] = False
 UPLOAD_FOLDER = ''
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','heic','heif'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -80,4 +80,4 @@ def upload_file():
     <form method=post enctype=multipart/form-data>
       <input type=file name=file>
       <input type=submit value=Upload>
-    </form>
+    </form>'''
