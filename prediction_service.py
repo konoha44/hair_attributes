@@ -1,13 +1,15 @@
 from flask import Flask, request, jsonify, abort, redirect, url_for, render_template, send_file
 import numpy as np
 import tensorflow as tf
-from model import load_models, predict,load_categ, predicted_atr_html
+from model import load_models, predict,load_categ, predicted_atr_html, download_model
 import time
 import json
 from flask_wtf import FlaskForm
 from wtforms import StringField, FileField
 from wtforms.validators import DataRequired
-
+import os
+from flask import Flask, flash, request, redirect, url_for
+from werkzeug.utils import secure_filename
 
 categ_dict = load_categ()
 
@@ -17,11 +19,20 @@ app.config.update(dict(
     WTF_CSRF_SECRET_KEY="a csrf secret key"
 ))
 app.config['JSON_AS_ASCII'] = False
+UPLOAD_FOLDER = ''
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+start = time.time()
+download_model('hair-atrs-models')
+end = time.time()-start
+print('модели скачались')
 
 start = time.time()
 models = load_models()
 end = time.time()-start
-print(f'модель загрузилась  {end}',models.keys())
+print(f'модель загружены в память  {end}',models.keys())
 
 @app.route('/predict_atrs', methods=['POST'])
 def predict_atrs():
@@ -42,39 +53,6 @@ def predict_atrs():
 class MyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     file = FileField()
-
-from werkzeug.utils import secure_filename
-import os
-
-@app.route('/submit', methods=('GET', 'POST'))
-def submit():
-    form = MyForm()
-    print('file recieved')
-    if form.validate_on_submit():
-
-        f = form.file.data
-        filename = form.name.data + '.csv'
-        # f.save(os.path.join(
-        #     filename
-        # ))
-
-        print('file recieved')
-
-        return send_file(filename,
-                     mimetype='text/csv',
-                     attachment_filename=filename,
-                     as_attachment=True)
-
-    return render_template('submit.html', form=form)
-
-import os
-from flask import Flask, flash, request, redirect, url_for
-from werkzeug.utils import secure_filename
-
-UPLOAD_FOLDER = ''
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
     return '.' in filename and \
