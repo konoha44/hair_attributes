@@ -1,16 +1,25 @@
 version: '3'
+volumes:
+    web_data:
+        external: true
 services:
   dowload_model:
     build: .
     command: python download_model.py
+    volumes: 
+        - ./:/root
+    network_mode: "bridge"
   flask:
     build: .
-    command: gunicorn -b 0.0.0.0:5001 prediction_service:app --reload --workers 1
+    command: gunicorn -b 0.0.0.0:8000 prediction_service:app --reload --workers 2
     environment:
       - FLASK_APP=prediction_service.py
       - FLASK_DEBUG=1
       - PYTHONUNBUFFERED=True
     ports:
       - "5001:5001"
+    restart: on-failure
     volumes:
-      - ./:/root
+        - ./:/root
+    depends_on:
+        - "dowload_model"

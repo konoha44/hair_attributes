@@ -24,8 +24,6 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
-
 start = time.time()
 models = load_models()
 end = time.time()-start
@@ -44,8 +42,6 @@ def predict_atrs():
 
     predicted_atrs.append({'status':'OK'})
     return jsonify(predicted_atrs)
-
-
 
 class MyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
@@ -85,4 +81,3 @@ def upload_file():
       <input type=file name=file>
       <input type=submit value=Upload>
     </form>
-    '''

@@ -1,9 +1,7 @@
-
 import boto3
 import time
 import os
 
-print('asd')
 def download_model(bucket):
     session = boto3.session.Session()
     s3 = session.client(
@@ -21,4 +19,4 @@ def download_model(bucket):
 start = time.time()
 download_model('hair-atrs-models')
 end = time.time()-start
-print('модели скачались ',end)
+print('Загрузилось за  ', end)

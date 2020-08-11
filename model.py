@@ -5,7 +5,7 @@ import numpy as np
 import onnxruntime
 import json
 from tensorflow.keras.applications.xception import preprocess_input
-
+import time
 
 
 def load_models():
@@ -19,7 +19,7 @@ def load_models():
 def predict(image, models, categ_dict):
     data = tf.image.resize(tf.image.decode_image(image,channels=3), (280,280))/255.
     x = np.expand_dims(data.numpy(), axis=0)
-    # x = preprocess_input(x)
+#    x = preprocess_input(x)
     x = x if isinstance(x, list) else [x] 
     list_atrs = []
     for name,model in models.items():
@@ -39,6 +39,3 @@ def predicted_atr_html(list_atrs):
                     for atr,prob in atr_dict.items()] for atr_dict in list_atrs]
     list_atrs = ['<p>'+"\n".join(atr_list)+'</p>' for atr_list in list_atrs]
     return "\n\n".join(list_atrs)
-
-
-
