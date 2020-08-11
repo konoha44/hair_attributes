@@ -1,5 +1,6 @@
 import boto3
 from tqdm import tqdm
+import time
 
 
 def download_model(bucket):

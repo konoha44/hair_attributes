@@ -2,7 +2,6 @@ version: '3'
 services:
   flask:
     build: .
-    command: python download_model.py
     command: gunicorn -b 0.0.0.0:5001 prediction_service:app --reload --workers 1
     environment:
       - FLASK_APP=prediction_service.py
