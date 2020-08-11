@@ -1,5 +1,4 @@
 import boto3
-from tqdm import tqdm
 import time
 
 
@@ -12,7 +11,7 @@ def download_model(bucket):
     model_names = []
     for item in s3.list_objects(Bucket=bucket)['Contents']:
         model_names.append(item['Key'])
-    for model in tqdm(model_names, desc='Download Models'):
+    for model in model_names:
         get_object_response = s3.get_object(Bucket=bucket,Key=model)
         with open(model, 'wb') as model_file:
             model_file.write(get_object_response['Body'].read())
