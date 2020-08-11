@@ -3,3 +3,4 @@ __pycash__/*
 .keras/
 .keras/*
 *.onnx
+.DS_Store

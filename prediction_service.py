@@ -97,7 +97,7 @@ def upload_file():
             output = f"""
             <!doctype html>
             <title>Upload new File</title>
-            <center><h1>Предсказанные категории</h1></center>
+            <center><h1>Предсказанные атрибутов по фотографии</h1></center>
             {predicted_atr_html(predicted_atrs)}
             """
             return output
