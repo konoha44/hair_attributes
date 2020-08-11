@@ -1,7 +1,4 @@
 version: '3'
-volumes:
-    web_data:
-        external: true
 services:
   dowload_model:
     build: .
