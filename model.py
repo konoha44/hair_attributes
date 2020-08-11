@@ -9,6 +9,8 @@ import time
 
 
 def load_models():
+    while len(glob.glob('*.onnx'))!=7:
+        time.sleep(3)
     model_paths = glob.glob('*.onnx')
     model_dicts = {}
     for model_path in model_paths:
