@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, abort, redirect, url_for, render_template, send_file
 import numpy as np
 import tensorflow as tf
-from model import load_models, predict,load_categ, predicted_atr_html, download_model
+from model import load_models, predict,load_categ, predicted_atr_html
 import time
 import json
 from flask_wtf import FlaskForm
@@ -24,10 +24,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-start = time.time()
-download_model('hair-atrs-models')
-end = time.time()-start
-print('модели скачались')
+
 
 start = time.time()
 models = load_models()
