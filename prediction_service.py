@@ -96,7 +96,7 @@ def upload_file():
             predicted_atrs = predict(image, models, categ_dict)
             output = f"""
             <!doctype html>
-            <title>Upload new File</title>
+            <title>Предсказание атрибутов по фотографии</title>
             <center><h1>Предсказанные атрибутов по фотографии</h1></center>
             {predicted_atr_html(predicted_atrs)}
             """
