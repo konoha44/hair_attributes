@@ -23,10 +23,17 @@ def predict(image, models, categ_dict):
     x = x if isinstance(x, list) else [x] 
     list_atrs = []
     for name,model in models.items():
+        flag = 1
         feed = dict([(input.name, x[n]) for n, input in enumerate(model.get_inputs())])  
         prediction = model.run(None,feed)[0]   
-        categ_to_predict = categ_dict[name]  
-        list_atrs.append({categ_to_predict[str(i)]:float(j) for i,j in [*enumerate(prediction[0])]})
+        categ_to_predict = categ_dict[name]
+        if 'Вьющиеся_прямые' in name:
+            flag = -1
+        list_atrs.append(
+                        {categ_to_predict[str(i)]:float(j) 
+                                for i,j in [*enumerate(prediction[0][::flag])]
+                            }
+                                )
     return list_atrs
 
 def load_categ():
