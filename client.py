@@ -4,5 +4,5 @@ with open('picture.jpg','rb') as file:
     img = file.read()
 
 files = {'image': img}
-r = requests.post("http://0.0.0.0:5001/predict_atr", files=files)
+r = requests.post("http://0.0.0.0:5001/predict_atrs", files=files)
 print(r.text)

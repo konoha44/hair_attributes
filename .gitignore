@@ -2,4 +2,4 @@ __pycash__/
 __pycash__/*
 .keras/
 .keras/*
-model.onnx
+*.onnx
