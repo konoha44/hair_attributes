@@ -5,7 +5,6 @@ COPY . /root
 WORKDIR /root
 
 RUN pip install flask gunicorn flask_wtf boto3 tqdm
+RUN python download_model.py
 RUN pip install numpy==1.18.5
 RUN pip install tensorflow==2.2.0 onnxruntime==1.4.0
-
-CMD python download_model.py
