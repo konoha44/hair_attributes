@@ -1,6 +1,7 @@
 # файл config
+
 [default]
-            region=ru-central1
+\t\t\tregion=ru-central1
 
 # Файл credentials
 [default]
