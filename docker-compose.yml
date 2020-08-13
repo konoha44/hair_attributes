@@ -1,15 +1,15 @@
 version: '3'
 services:
-  dowload_model:
-    build: .
-    command: python download_model.py
-    volumes: 
-        - ./:/root
-    network_mode: "bridge"
+  # dowload_model:
+  #   build: .
+  #   command: python download_model.py
+  #   volumes: 
+  #       - ./:/root
+  #   network_mode: "bridge"
   flask:
     build: .
     command: sh -c "
-    sleep 60 &&
+    python download_model.py &&
     gunicorn -b 0.0.0.0:8000 prediction_service:app --reload --workers 2"
     environment:
       - FLASK_APP=prediction_service.py
