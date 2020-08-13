@@ -18,6 +18,3 @@ services:
     restart: on-failure
     volumes:
         - ./:/root
-    # depends_on:
-    #     - dowload_model
-        # sh -c "python download_model.py && gunicorn -b 0.0.0.0:8000 prediction_service:app --reload --workers 1"
