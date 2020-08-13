@@ -27,7 +27,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 start = time.time()
 models = load_models()
 end = time.time()-start
-print(f'модель загружены в память  {end}',models.keys())
+print(f'модели загружены в память  {end}',models.keys())
 
 @app.route('/predict_atrs', methods=['POST'])
 def predict_atrs():
