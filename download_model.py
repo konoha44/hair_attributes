@@ -20,6 +20,6 @@ def download_model(bucket):
 if len([i for i in os.listdir() if '.onnx' in i])<7:
     print('Началась загрузка моделей')
     start = time.time()
-    download_model('hair-atrs-models')
+    download_model('hair-models')
     end = time.time()-start
     print('Загрузилось за  ', end)
