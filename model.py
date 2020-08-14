@@ -1,4 +1,3 @@
-from tensorflow.python.keras import backend as K
 import tensorflow as tf
 import glob
 import numpy as np
@@ -9,8 +8,6 @@ import time
 
 
 def load_models():
-    while len(glob.glob('*.onnx'))!=7:
-        time.sleep(3)
     model_paths = glob.glob('*.onnx')
     model_dicts = {}
     for model_path in model_paths:
@@ -20,9 +17,10 @@ def load_models():
 
 def predict(image, models, categ_dict):
     data = tf.image.resize(tf.image.decode_image(image,channels=3), (280,280))/255.
+
     x = np.expand_dims(data.numpy(), axis=0)
-#    x = preprocess_input(x)
     x = x if isinstance(x, list) else [x] 
+    
     list_atrs = []
     for name,model in models.items():
         flag = 1

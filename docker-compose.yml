@@ -8,7 +8,7 @@ services:
     network_mode: "bridge"
   flask:
     build: .
-    command: sh -c "python entrypoint.py && gunicorn -b 0.0.0.0:8000 prediction_service:app --reload --workers 2"
+    command: sh -c "python entrypoint.py && gunicorn -b 0.0.0.0:8000 prediction_service:app --reload --workers 1"
     environment:
       - FLASK_APP=prediction_service.py
       - FLASK_DEBUG=1

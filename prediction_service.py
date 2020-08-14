@@ -13,6 +13,7 @@ from werkzeug.utils import secure_filename
 
 categ_dict = load_categ()
 
+# init Flask app
 app = Flask(__name__)
 app.config.update(dict(
     SECRET_KEY="powerful secretkey",
@@ -20,6 +21,8 @@ app.config.update(dict(
 ))
 app.config['JSON_AS_ASCII'] = False
 UPLOAD_FOLDER = ''
+
+# allowed image formats
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','heic','heif'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -38,7 +41,7 @@ def predict_atrs():
         predicted_atrs = predict(image, models, categ_dict)
 
     except Exception as e:
-        return jsonify({'status':['FAILED'],'description':str(e)})
+        return jsonify({'status':'FAILED','description':str(e)})
 
     predicted_atrs.append({'status':'OK'})
     return jsonify(predicted_atrs)
@@ -75,8 +78,8 @@ def upload_file():
             
     return '''
     <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
+    <title>Upload Picture</title>
+    <h1>Upload Picture</h1>
     <form method=post enctype=multipart/form-data>
       <input type=file name=file>
       <input type=submit value=Upload>

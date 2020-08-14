@@ -11,3 +11,17 @@ docker-compose up --build
 *Дожидаемся пока не выведется запись "модели загружены в память "*
 
 удерживая кнопку ctrl последовательно нажимаем на A затем на D
+
+
+```usage: client.py [-h] [--image_name IMAGE_NAME] host
+
+Predict image with hair attributes
+
+positional arguments:
+  host                  public ip
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --image_name IMAGE_NAME
+                        name of image (default: picture.jpg)
+```
