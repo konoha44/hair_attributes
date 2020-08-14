@@ -12,7 +12,7 @@ docker-compose up --build
 
 удерживая кнопку ctrl последовательно нажимаем на A затем на D
 
-
+# Для запросов из консоли
 ```usage: client.py [-h] [--image_name IMAGE_NAME] host
 
 Predict image with hair attributes
@@ -25,3 +25,11 @@ optional arguments:
   --image_name IMAGE_NAME
                         name of image (default: picture.jpg)
 ```
+```
+python client.py <public_host>
+or
+python client.py <public_host> --image_name=picture.jpg
+```
+
+# Через форму в браузере (вебсайт)
+http://<public_host>:8000/upload
