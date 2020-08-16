@@ -2,7 +2,7 @@
 Создаем виртуальную машину на яндекс облаке (с предустановленным докер контейнером)
 
 ```
-git clone https://github.com/konoha44/hair_attributes
+git clone https://github.com/<user_name>/<repository_name>
 cd hair_attributes
 sudo apt install screen
 screen -S hair_service
