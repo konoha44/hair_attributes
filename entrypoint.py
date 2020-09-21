@@ -8,7 +8,7 @@ def waiting():
         sleep(15)
     sleep(5)
 
-if take_amount!=7:
+if take_amount()!=7:
     waiting()
     
 print('\n\n все модели загружены из яндекса, можем запускать фласк\n\n')
